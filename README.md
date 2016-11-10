@@ -1,2 +1,2 @@
 # nlp-lyrics
-testing
+testing natural language processing on song lyrics
