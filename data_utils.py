@@ -18,7 +18,7 @@ import itertools
 def showGenreStat():
 	dataBaseName ='lyrics'
 	tableName='lyricsBody_full' 
-	db = MySQLdb.connect(host='localhost', user='root',passwd='2099', db=dataBaseName)
+	db = MySQLdb.connect(host='localhost', user='root',passwd='??????', db=dataBaseName)
 	cursor = db.cursor()
 	cursor.execute("SELECT DISTINCT genre FROM " + tableName)
 	genreSet=cursor.fetchall()
