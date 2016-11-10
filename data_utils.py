@@ -37,9 +37,6 @@ def get_Lyric_Genre(dataBaseName ='lyrics', tableName='lyrics_a_to_z',
 	"""read MySQL and get lyrics and their genre (one-hot encoding)"""
 	db = MySQLdb.connect(host='localhost', user='root',passwd='2099', db=dataBaseName)
 	cursor = db.cursor()
-	#pickGenres = """ WHERE genre = '{}' OR genre ='{}' OR genre='{}' OR genre='{}'""".format(*genreSet)
-	#cursor.execute("SELECT lyric, genre FROM " + tableName + pickGenres)	
-	#q= cursor.fetchall()
 	q=()
 	picked=[]
 	for genreName, genreNum in zip(genreSet, pickNum):
@@ -95,24 +92,7 @@ def build_corpus(lyrics):
 	word2id['NULL']=0
 	corpus=[[word2id[word] for word in c] for c in lyrics]			# build corpus using the char2id embedding
 	return corpus, word2id, id2word
-"""
-def fetch_batch(rawData, batchSize, epochs):
-	#generate mini batch
-	#rawData=np.array(rawData)
-	dataLen=len(rawData)
-	numBatch=int(len(rawData)/batchSize)+1
-	for i in range(epochs):
-		for j in range(numBatch):
-			startId=j*batchSize
-			endId=startId+batchSize
-			if endId>dataLen:
-				endId=dataLen
-			if startId<endId: # avoid empty list
-				yield rawData[startId:endId]
 
-x,y=get_Lyric_Genre()
-batch_iterator = fetch_batch(zip(x,y),batchSize=10, epochs=3)
-"""
 
 
 
